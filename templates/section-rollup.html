@@ -1,0 +1,23 @@
+            <div class="container-960 centered main-article-rollup">
+                {% for item in items %}
+                    <a href="{{item.link}}" title="{{item.title}}" class="article-rollup {{item.category}}">
+                        <div class="spacing">
+                            <div class="article-rollup-image" style="background-image: url('{{item.thumbnail}}')">
+                                <div class="article-rollup-rollover">
+                                    <div class="read-text"><span>READ</span></div>
+                                    <div class='article-rollup-rating'>
+                                        {% if item.rating %}
+                                            {% for i in 1..5 %}
+                                                <span class='article-rollup-rating-star {% if item.rating >= i %} article-rollup-rating-star-filled {% endif %}'></span>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="article-rollup-title">
+                                <h3>{{item.title}}</h3>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>

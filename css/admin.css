@@ -1,0 +1,25 @@
+.wrap.jd-my-calendar .postbox-container.jcd-narrow {display: none;}
+
+.jcd-wide {width: 100%;}
+
+/* Nested Pages */
+.nestedpages ol li {
+    background-color: #DDDDDD;
+}
+
+.nestedpages ol ol { 
+    margin-left: 46px;
+}
+
+.nestedpages ol li ol .row-inner {
+    padding-left: 60px !important;
+}
+
+
+/* ACF */ 
+tr:nth-child(odd) > td.order {
+    background: #ddd !important;
+}
+
+#wp-content-media-buttons #dedo-media-button,
+.acf-input #dedo-media-button {display: none;}

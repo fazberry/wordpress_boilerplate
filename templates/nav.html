@@ -1,0 +1,51 @@
+            <div class="navigation">
+                <div class="container-900 centered navigation-inner">
+                    <a class="logo" href="/"></a>
+                    <a class="latest-issue" href="/">LATEST ISSUE</a>
+                    <a href="#" class="burger"></a>
+                    <a href="#" class="search"></a>
+                    <ul>
+                    {% for slug, category in categories %}    
+                        <li class="nav-dropdown nav-category"><a class="nav-item {{slug}}-border-colour" href="#">{{category.navTitle}}</a>
+                            <ul class="{{slug}}-bg">
+                                {% for navItem in category.navItems %}     
+                                    <li>
+                                        <a class="nav-item" href="{{navItem.link}}">{{navItem.title}}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                        <li class="archive"><a class="archive-button" href="#">ALL ISSUES</a>
+                            <ul>
+                                <li>
+                                    <div class="container-960 centered  section-archive nav-archive">
+                                        <div class="container-900 centered ">
+                                            <a href="#" class="arrow left-arrow"></a>
+                                            <a href="#" class="arrow right-arrow"></a>
+                                            <div class="container-850 centered section-archive-carousel nav-archive-carousel">
+                                                <!--start foreach-->
+                                                    <div>
+                                                        <a href="/issue/" class="article-rollup archive-hover">
+                                                            <div class="spacing">
+                                                                <div class="article-rollup-image" style="background-image: url('');">
+                                                                    <div class="article-rollup-rollover">
+                                                                        <div class="read-text"><span>READ</span></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="article-rollup-title">
+                                                                    <h3></h3>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                <!--end foreach-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> <!-- Navigation -->

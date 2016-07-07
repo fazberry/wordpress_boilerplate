@@ -1,0 +1,14 @@
+.article-rollup-rollover {display: none;}
+.article-rollup:hover .article-rollup-rollover {display: block;}
+
+.masthead,
+.section-issue-welcome-image,
+.article-rollup-image {
+    -ms-behavior: url(/wp-content/themes/kfi/backgroundsize.min.htc);
+}
+
+.article-container {position: static;}
+
+.category-homepage .navigation {position: absolute !important; top: 360px !important;}
+
+.video-controls {display: none;}
