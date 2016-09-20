@@ -24,3 +24,11 @@
     remove_action('wp_head', 'wlwmanifest_link');
 
 
+    add_filter('page_attributes_dropdown_pages_args', 'my_attributes_dropdown_pages_args', 1, 1);
+
+    function my_attributes_dropdown_pages_args($dropdown_args) {
+
+        $dropdown_args['post_status'] = array('publish','draft');
+
+       return $dropdown_args;
+    }
