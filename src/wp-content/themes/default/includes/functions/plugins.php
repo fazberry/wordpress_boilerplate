@@ -45,6 +45,13 @@
                 'force_activation'   => false
             ),
 
+            array(
+                'name'      => 'Post Tags and Categories for Pages',
+                'slug'      => 'post-tags-and-categories-for-pages',
+                'required'  => true,
+                'force_activation'   => true
+            ),
+
         );
 
         $config = array(

@@ -8,7 +8,7 @@
         error_reporting(E_ALL);
     }
 
-
+    include 'includes/functions/plugins.php';
     include 'includes/functions/default.php';
     include 'includes/functions/enqueue.php';
     include 'includes/functions/twig.php';
