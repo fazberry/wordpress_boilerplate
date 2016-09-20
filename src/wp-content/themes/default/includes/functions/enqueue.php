@@ -10,9 +10,8 @@
     add_action('wp_enqueue_scripts', 'custom_css');
     function custom_css() {
         wp_enqueue_style('normalize-css', get_template_directory_uri() . '/vendor/normalize.min.css');
-        wp_enqueue_style('default-css', get_template_directory_uri() . '/css/default.css');
-        wp_enqueue_style('custom-css', get_template_directory_uri() . '/css/custom.css');
-        wp_enqueue_style('mobile-css', get_template_directory_uri() . '/css/mobile.css');
+        wp_enqueue_style('skeleton-css', get_template_directory_uri() . '/vendor/skeleton.css');
+        wp_enqueue_style('main-css', get_template_directory_uri() . '/css/main.css');
     }
 
     //Making jQuery Google API

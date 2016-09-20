@@ -40,7 +40,7 @@ module.exports = function() {
     // Compile our Sass
     gulp.task('sass', function() {
         var s = sass();
-        s.on('error', function() { console.log("Error processing SASS"); this.emit('end'); });
+        s.on('error', function(e) { console.log("Error processing SASS", e); this.emit('end'); });
 
         return gulp.src(['src/**/*.scss', '!src/**/_*.scss'])
             .pipe(s)

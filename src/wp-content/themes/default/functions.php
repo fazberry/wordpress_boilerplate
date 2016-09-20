@@ -14,3 +14,6 @@
     include 'includes/functions/twig.php';
     include 'includes/functions/custom-fields.php';
     include 'includes/functions/image-sizes.php';
+
+    include 'includes/class.site.php';
+

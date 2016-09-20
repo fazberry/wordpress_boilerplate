@@ -4,11 +4,10 @@
 {% block html %}
     
     {% include 'blocks/header.html' %}
+    {% include 'blocks/nav.html' %}
 
-    <div class="page-content">
 
-        {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 
-    </div>
-
+    {% include 'blocks/footer.html' %}
 {% endblock %}

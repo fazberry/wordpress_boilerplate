@@ -1,4 +1,3 @@
 <?php
 
-    include 'includes/header.php';
-    include 'includes/footer.php';
+    echo $twig->render('404.html', array());

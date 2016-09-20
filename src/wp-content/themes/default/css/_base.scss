@@ -1,0 +1,61 @@
+body {
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    max-width: 100%;
+}
+
+.container {
+    width: 86%;
+    max-width: 1400px;
+}
+
+/********** NAV **********/
+
+#nav {
+    background: $mainBackground;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+
+            a {
+                display: block;
+                color: $linkColor;
+                padding: 0 20px;
+                font-size: 1.1em;
+                line-height: 2.5em;
+
+                &:hover {
+
+                }
+
+                &:first-child {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}
+
+
+/********** UTILITIES **********/
+
+.u-text-right {
+    text-align: right;
+}
+ 
+.u-text-center {
+    text-align: center;
+}

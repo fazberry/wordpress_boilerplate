@@ -1,0 +1,12 @@
+{% extends 'layouts/main.html' %}
+
+
+{% block content %}
+    
+    <div class="container">
+        {% for article in articles %}
+            {% include 'blocks/rollup.html' %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -20,3 +20,9 @@
         bloginfo('name');
     });
     $twig->addFunction($wp_title);
+
+    $get_image = new Twig_SimpleFunction('getImage', function($id, $size) {
+        $image = wp_get_attachment_image_src($id, $size);
+        return $image[0];
+    });
+    $twig->addFunction($get_image);
