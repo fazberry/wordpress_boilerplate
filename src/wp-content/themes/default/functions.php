@@ -12,4 +12,5 @@
     include 'includes/functions/default.php';
     include 'includes/functions/enqueue.php';
     include 'includes/functions/twig.php';
+    include 'includes/functions/custom-fields.php';
     include 'includes/functions/image-sizes.php';
