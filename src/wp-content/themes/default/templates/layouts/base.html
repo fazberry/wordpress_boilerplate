@@ -8,17 +8,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Boilerplate test</title>
+        <title>{{ wp_title() }}</title>
         
         <script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
         
         <link rel="icon" type="image/png" href="images/core/favicon.png">
-        <link rel="stylesheet" type="text/css" href="css/normalize.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/base.css" />
-        <link rel="stylesheet" type="text/css" href="css/custom.css" />
-        <link rel="stylesheet" type="text/css" href="css/mobile.css" />
-        <link rel="stylesheet" type="text/css" href="css/issue.css" />
-        <link rel="stylesheet" type="text/css" href="css/print.css" />
+        
+        {{ wp_head() }}
 
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -31,10 +27,7 @@
         </script>
     </head>
     <body>
-
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-1.12.1.min.js">\x3C/script>')</script>
-        <script src="js/main.js"></script>
+        {% block html %}{% endblock %}
+        {{ wp_footer() }}
     </body>
 </html>
