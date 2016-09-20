@@ -52,6 +52,13 @@
                 'force_activation'   => true
             ),
 
+            array(
+                'name'      => 'Allow Numeric Slugs',
+                'slug'      => 'allow-numeric-stubs',
+                'required'  => true,
+                'force_activation'   => true
+            ),
+
         );
 
         $config = array(
