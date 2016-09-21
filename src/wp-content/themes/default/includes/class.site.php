@@ -13,6 +13,8 @@
             $issue = $this->getIssue();
             $this->_site->issue = new Issue($issue);
             $this->_site->nav = $this->getNav();
+
+            wp_reset_postdata();
         }
 
         public function __get($name) {
@@ -60,10 +62,12 @@
                     'parent'        => $parents[0]->ID
                 ));
 
-                // return $issues[0];
-                header('Location: ' . $issues[0]->guid);
-
-                die();
+                if (is_category()) {
+                    return $issues[0];
+                } else {
+                    header('Location: ' . $issues[0]->guid);
+                    die();
+                }
 
             }
 
