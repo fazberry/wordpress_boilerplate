@@ -5,6 +5,11 @@ $linkColor: green;
 
 
 
+@mixin background-size($size) {
+    background-position: center;
+    background-size: $size;
+}
+
 @mixin transparent($color, $alpha) {
     $rgba: rgba($color, $alpha);
     $ie-hex-str: ie-hex-str($rgba);
@@ -12,4 +17,22 @@ $linkColor: green;
     background-color: $rgba;
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
     zoom: 1;
+}
+
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+    > .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 }

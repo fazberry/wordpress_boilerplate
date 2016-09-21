@@ -15,8 +15,8 @@ input {
     max-width: 1400px;
 }
 
-/********** NAV **********/
 
+/********** NAV **********/
 #nav {
     background: $mainBackground;
 
@@ -49,6 +49,18 @@ input {
     }
 }
 
+
+/********** ROLLUP **********/
+.rollup {
+    .rollup-image {
+        width: 100%;
+        @include aspect-ratio(16, 9);
+
+        .content {
+           @include background-size(cover);
+        }
+    }
+}
 
 /********** UTILITIES **********/
 
