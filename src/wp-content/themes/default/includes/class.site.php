@@ -12,6 +12,7 @@
 
             $issue = $this->getIssue();
             $this->_site->issue = new Issue($issue);
+            $this->_site->nav = $this->getNav();
         }
 
         public function __get($name) {
@@ -70,6 +71,32 @@
 
         public function getArticle($ID) {
             return new Article($ID);
+        }
+
+        public function getNav() {
+            $nav = array();
+
+            // Home
+            $home = (object) array(
+                'title' => 'Home',
+                'link' => '/'
+            );
+            array_push($nav, $home);
+
+            // Get issue categories
+            $items = $this->_site->issue->getNavItems();
+            if ($items) {
+                $nav = array_merge($nav, $items);
+            }
+
+            // Archive
+            $archive = (object) array(
+                'title' => 'Archive',
+                'link' => '/archive'
+            );
+            array_push($nav, $archive);
+
+            return $nav;
         }
 
     }
