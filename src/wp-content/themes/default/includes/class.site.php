@@ -83,7 +83,7 @@
             // Home
             $home = (object) array(
                 'title' => 'Home',
-                'link' => '/'
+                'link' => $this->_site->issue->link
             );
             array_push($nav, $home);
 
