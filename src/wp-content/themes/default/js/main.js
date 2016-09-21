@@ -6,14 +6,16 @@ $(function() {
     function lazyLoad(x) {
         x += $(window).height() + 100;
         $('[data-background],[data-image]').each(function(){
-            var self = $(this);
+            var self = $(this),
+                image;
+
             if(self.offset().top > x) {
                 return;
             }
             if(self.data('background')){
-                var image = self.data('background');
+                image = self.data('background');
             } else {
-                var image = self.data('image');
+                image = self.data('image');
             }
             $('<img>',{src:image}).on('load', function(){
                 if(self.data('background')){
@@ -23,7 +25,7 @@ $(function() {
                 }
                 self.removeAttr('data-background');
                 self.removeAttr('data-image');
-            })
+            });
         });
     }
 
