@@ -8,6 +8,7 @@
             $this->_article = (object) array();
 
             $this->_article->ID = $ID;
+            $this->_article->url = get_the_permalink($ID);
             $this->_article->title = get_the_title($ID);
             $this->_article->excerpt = get_field('excerpt') ? get_field('excerpt') : get_the_excerpt($ID);
 
