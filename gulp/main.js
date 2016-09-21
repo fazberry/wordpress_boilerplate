@@ -1,4 +1,5 @@
-var gulp = require("gulp");
+var gulp = require("gulp"),
+    del = require("del");
 
 module.exports = function() {
     // Include gulp
@@ -69,5 +70,14 @@ module.exports = function() {
         gulp.watch(src+'js/*.js', ['lint', 'scripts', 'scriptsStatic']);
         gulp.watch(src+'css/*.scss', ['sass']);
         gulp.watch(src+'css/*.css', ['css']);
+
+        // Delete files
+        gulp.watch(['./src/*', './src/**/*']).on('change', function (event) {
+            if (event.type === 'deleted') {
+                var filePathFromSrc = path.relative(path.resolve('src/'), event.path);
+                var destFilePath = path.resolve('dist/', filePathFromSrc);
+                del.sync(destFilePath);
+            }
+        });
     });
 }
