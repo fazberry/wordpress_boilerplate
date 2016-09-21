@@ -66,17 +66,18 @@ module.exports = function() {
 
     // Watch Files For Changes
     gulp.task('watch', function() {
-        gulp.watch(['./src/*','./src/**/*', '!'+src+'js/*.js', '!'+src+'js/*.css', '!'+src+'js/*.scss'], ['move']);
-        gulp.watch(src+'js/*.js', ['lint', 'scripts', 'scriptsStatic']);
-        gulp.watch(src+'css/*.scss', ['sass']);
-        gulp.watch(src+'css/*.css', ['css']);
+        gulp.watch('src/**/*.js', ['lint', 'scripts', 'scriptsStatic']);
+        gulp.watch('src/**/*.scss', ['sass']);
+        gulp.watch('src/**/*.css', ['css']);
 
         // Delete files
-        gulp.watch(['./src/*', './src/**/*']).on('change', function (event) {
+        gulp.watch(['src/**/*']).on('change', function (event) {
             if (event.type === 'deleted') {
                 var filePathFromSrc = path.relative(path.resolve('src/'), event.path);
                 var destFilePath = path.resolve('dist/', filePathFromSrc);
                 del.sync(destFilePath);
+            } else {
+                gulp.start('move');
             }
         });
     });
