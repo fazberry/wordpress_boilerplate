@@ -12,7 +12,7 @@ input {
 
 .container {
     width: 86%;
-    max-width: 1400px;
+    max-width: 1024px;
 }
 
 
@@ -56,14 +56,32 @@ input {
         width: 100%;
         @include aspect-ratio(16, 9);
 
-        .content {
+        .ratio-container {
            @include background-size(cover);
         }
     }
 }
 
-/********** UTILITIES **********/
 
+/********** MASTHEAD **********/
+#masthead {
+    @include aspect-ratio(10, 3);
+
+    overflow: hidden;
+    margin-bottom: 3em;
+
+    .ratio-container {
+       @include background-size(cover);
+    }
+
+    .masthead-hype, .masthead-hype > div {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+
+/********** UTILITIES **********/
 .u-text-right {
     text-align: right;
 }

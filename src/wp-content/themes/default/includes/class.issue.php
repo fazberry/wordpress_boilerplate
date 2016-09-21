@@ -1,6 +1,6 @@
 <?php
 
-    include 'class.article.php';
+    include_once 'class.article.php';
 
     class Issue {
 

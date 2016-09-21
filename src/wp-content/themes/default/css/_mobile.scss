@@ -1,0 +1,7 @@
+@media (max-width: 400px) {
+    
+    #masthead {
+        @include aspect-ratio(10, 8);
+    }
+
+}

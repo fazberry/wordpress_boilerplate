@@ -1,6 +1,7 @@
 <?php
 
-    include('class.issue.php');
+    include_once 'class.issue.php';
+    include_once 'class.article.php';
 
     class Site {
 
@@ -65,6 +66,10 @@
 
             }
 
+        }
+
+        public function getArticle($ID) {
+            return new Article($ID);
         }
 
     }
