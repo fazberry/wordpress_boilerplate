@@ -4,8 +4,14 @@
 {% block content %}
     
     <div class="container">
-        {% for article in articles %}
-            {% include 'blocks/rollup.html' %}
+        {% for row in articles|batch(3) %}
+            <div class="row">
+                {% for article in row %}
+                    <div class="four columns">
+                        {% include 'blocks/rollup.html' %}
+                    </div>
+                {% endfor %}
+            </div>
         {% endfor %}
     </div>
 
