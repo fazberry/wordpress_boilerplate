@@ -27,14 +27,12 @@
 
         public function getArticles($args = array()) {
             $defaults = array(
-                'post_type'     => 'page',
-                'post_parent'   => $this->_issue->ID,
-                'limit'         => -1
+                'post_type'      => 'page',
+                'post_parent'    => $this->_issue->ID,
+                'posts_per_page' => -1
             );
 
             $args = array_merge($defaults, $args);
-
-            print_r($args);
 
             $posts = get_posts($args);
             $articles = array();
