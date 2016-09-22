@@ -9,4 +9,5 @@
     add_image_size('thumbnail-lazy', 3, 2, true);
     add_image_size('thumbnail', 300, 200, true);
     add_image_size('masthead', 2000, 600, true);
+    add_image_size('masthead-mobile', 500, 300, true);
     add_image_size('masthead-lazy', 20, 6, true);

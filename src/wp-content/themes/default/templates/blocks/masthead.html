@@ -1,6 +1,6 @@
 {% if article.masthead %}
     <div id="masthead">
-        <div class="ratio-container" {% if article.masthead.type == 'image' %}style="background-image: url('{{ getImage(article.masthead.image, 'masthead-lazy') }}');" data-background="{{ getImage(article.masthead.image, 'masthead') }}"{% endif %}>
+        <div class="ratio-container" {% if article.masthead.type == 'image' %}style="background-image: url('{{ getImage(article.masthead.image, 'masthead-lazy') }}');" data-background="{{ getImage(article.masthead.image, 'masthead') }}"  data-background-mobile="{{ getImage(article.masthead.image, 'masthead-mobile') }}"{% endif %}>
 
             {% if article.masthead.html %}
                 <div class="masthead-hype">
