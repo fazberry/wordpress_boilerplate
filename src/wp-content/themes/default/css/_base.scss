@@ -15,6 +15,18 @@ input {
     max-width: 1024px;
 }
 
+/********** Header **********/
+
+#header {
+    .issue {
+        line-height: 68px;
+        font-size: 1.1em;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+}
+
 /********** Search **********/
 
 #search {
@@ -99,6 +111,7 @@ input {
 
 
 /********** MASTHEAD **********/
+
 #masthead {
     @include aspect-ratio(10, 3);
 

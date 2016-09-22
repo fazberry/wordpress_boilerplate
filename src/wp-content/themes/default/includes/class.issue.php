@@ -11,7 +11,7 @@
 
             $this->_issue->ID = $issue->ID;
             $this->_issue->link = get_the_permalink($issue->ID);
-            $this->_issue->title = get_the_title($issue->ID) . ' | ' . get_the_title($issue->post_parent);
+            $this->_issue->title = get_the_title($issue->ID) . ' ' . get_the_title($issue->post_parent);
         }
 
         public function __get($name) {
