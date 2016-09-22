@@ -5,18 +5,22 @@
 
     class Site {
 
+        // Stores all public variables
         private $_site;
 
+        // Build basic site object and load data
         function __construct() {
             $this->_site = (object) array();
 
             $issue = $this->getIssue();
+            $this->_site->logo = get_field('logo', 'site');
             $this->_site->issue = new Issue($issue);
             $this->_site->nav = $this->getNav();
 
             wp_reset_postdata();
         }
 
+        // Grant TWIG access to _site variables
         public function __get($name) {
             if (property_exists($this->_site, $name)) {
                 return $this->_site->$name;
@@ -25,13 +29,19 @@
             return null;
         }
 
+        // Grant TWIG access to _site variables
         public function __isset($name) {
             return property_exists($this->_site, $name);
         }
 
+        /*
+         * Get the issue
+         * - If not in issue, redirects to latest published issue
+         */
         private function getIssue() {
             global $post;
 
+            // If in an issue, work out what issue it is
             if(is_page() && $post->post_parent > 0) {
 
                 $children = get_pages('child_of='.$post->ID);
@@ -44,6 +54,7 @@
 
             } else {
 
+                // Find the latest published issue with published articles
                 $parents = get_pages(array(
                     'numberposts'   => 1,
                     'post_type'     => 'page',
@@ -62,6 +73,7 @@
                     'parent'        => $parents[0]->ID
                 ));
 
+                // If we are not on a special page redirect to current issue
                 if (is_category()) {
                     return $issues[0];
                 } else {
@@ -73,10 +85,12 @@
 
         }
 
+        // Build article object for a given post ID
         public function getArticle($ID) {
             return new Article($ID);
         }
 
+        // Generate sites nav, combining defaults and active issue categories
         public function getNav() {
             $nav = array();
 
