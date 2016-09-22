@@ -41,7 +41,7 @@
             },
             "default_value": "",
             "placeholder": "",
-            "prepend": "ga-",
+            "prepend": "UA-",
             "append": "",
             "maxlength": ""
         }
@@ -56,12 +56,12 @@
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "side",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1474540421
+    "modified": 1474545604
 }
