@@ -1,5 +1,4 @@
 <?php
-
     include_once 'class.issue.php';
     include_once 'class.article.php';
 
@@ -13,10 +12,25 @@
             $this->_site = (object) array();
 
             $issue = $this->getIssue();
+            $this->_site->development = (get_field('status', 'site') == 'dev');
             $this->_site->logo = get_field('logo', 'site');
+            $this->_site->url = get_site_url();
             $this->_site->ga = get_field('google_analytics', 'site');
             $this->_site->issue = new Issue($issue);
             $this->_site->nav = $this->getNav();
+
+
+            // Check if user has access
+            if ($this->_site->development && get_field('password', 'site')) {
+                // Have they entered the password?
+                if (isset($_SESSION['password']) && $_SESSION['password'] == get_field('password', 'site')) {
+                    //
+                } else {
+                    include(get_template_directory() . '/403.php');
+                    die();
+                }
+            }
+
 
             wp_reset_postdata();
         }
