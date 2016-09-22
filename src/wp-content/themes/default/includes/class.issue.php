@@ -10,6 +10,7 @@
             $this->_issue = (object) array();
 
             $this->_issue->ID = $issue->ID;
+            $this->_issue->link = get_the_permalink($issue->ID);
             $this->_issue->title = get_the_title($issue->ID) . ' | ' . get_the_title($issue->post_parent);
         }
 
@@ -42,6 +43,34 @@
             }
 
             return $articles;
+        }
+
+        public function getNavItems() {
+            $categories = array();
+            $articles = $this->getArticles();
+
+            foreach($articles AS $article) {
+                $tmpCategories = get_the_category($article->ID);
+
+                foreach($tmpCategories AS $category) {
+                    if ($category->term_id == 1 || array_key_exists($category->term_id, $categories)) {
+                        continue;
+                    }
+
+                    $categories[$category->term_id] = (object) array(
+                        'title' => $category->name,
+                        'link' => get_category_link($category->term_id)
+                    );
+                }
+            }
+
+            usort($categories, array($this, "sortNavItems"));
+
+            return $categories;
+        }
+
+        private function sortNavItems($a, $b) {
+            return strcmp($a->title, $b->title);
         }
 
     }

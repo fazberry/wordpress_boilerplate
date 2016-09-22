@@ -1,12 +1,9 @@
 <div id="nav">
     <div class="container">
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Category 1</a></li>
-            <li><a href="">Category 2</a></li>
-            <li><a href="">Category 3</a></li>
-            <li><a href="">Category 4</a></li>
-            <li><a href="">Archive</a></li>
+            {% for item in site.nav %}
+                <li><a href="{{ item.link }}">{{ item.title }}</a></li>
+            {% endfor %}
         </ul>
     </div>
 </div>
