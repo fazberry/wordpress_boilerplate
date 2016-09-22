@@ -9,6 +9,7 @@
     }
 
     include 'includes/functions/setup.php';
+    include 'includes/functions/admin.php';
     include 'includes/functions/plugins.php';
     include 'includes/functions/default.php';
     include 'includes/functions/enqueue.php';
