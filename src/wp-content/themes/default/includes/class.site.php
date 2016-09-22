@@ -14,6 +14,7 @@
 
             $issue = $this->getIssue();
             $this->_site->logo = get_field('logo', 'site');
+            $this->_site->ga = get_field('google_analytics', 'site');
             $this->_site->issue = new Issue($issue);
             $this->_site->nav = $this->getNav();
 
