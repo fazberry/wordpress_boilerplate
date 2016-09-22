@@ -1,6 +1,5 @@
 <?php
-
-    $debug = true;
+    $debug = (get_field('status', 'site') == 'dev');
 
     if ($debug) {
         ini_set('display_errors', 1);
