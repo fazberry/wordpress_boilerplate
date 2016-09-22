@@ -8,6 +8,7 @@
         error_reporting(E_ALL);
     }
 
+    include 'includes/functions/setup.php';
     include 'includes/functions/plugins.php';
     include 'includes/functions/default.php';
     include 'includes/functions/enqueue.php';
@@ -16,4 +17,3 @@
     include 'includes/functions/image-sizes.php';
 
     include 'includes/class.site.php';
-
