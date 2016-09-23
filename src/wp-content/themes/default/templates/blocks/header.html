@@ -1,11 +1,16 @@
 <div id="header">
     <div class="container">
-        <div class="row">
+        <div class="row-fixed">
             <div class="three columns">
                 <a href="{{ site.url }}"><img src="{{ getImage(site.logo, 'logo') }}" alt="" class="header-logo" /></a>
             </div>
             <div class="six columns u-text-center">
-                <div class="issue {% if site.issues is iterable %}issue--archive{% endif %}">{{ site.issue.title }}</div>
+                <div class="issue {% if site.issues is iterable %}issue--archive{% endif %}">
+                    {{ site.issue.title }}
+                    {% if site.issues is iterable %}
+                        <div class='issue-archive-icon'></div>
+                    {% endif %}
+                </div>
             </div>
             <div class="three columns u-text-right">
                 <form  id="search">

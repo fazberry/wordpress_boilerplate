@@ -27,5 +27,6 @@
     // Site JS
     add_action('wp_head', 'custom_js');
     function custom_js() {
+        wp_enqueue_script('modernizr-js', get_template_directory_uri() . '/vendor/modernizr.min.js', array(), '0.1', false);
         wp_enqueue_script('main-js', get_template_directory_uri() . '/js/main.js', array(), '0.1', true);
     }

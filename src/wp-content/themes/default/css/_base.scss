@@ -15,6 +15,12 @@ input {
     max-width: 1024px;
 }
 
+@media (max-width: 400px) {
+    .container {
+        width: 100%;
+    }
+}
+
 /********** Header **********/
 
 #header {
@@ -27,14 +33,29 @@ input {
 
         &.issue--archive {
             cursor: pointer;
+        }
+
+        .issue-archive-icon {
             background-image: url('../assets/images/chevron-down.svg');
-            background-position: center right;
+            background-position: center;
             background-repeat: no-repeat;
-            padding-right: 30px;
+            width: 15px;
+            height: 12px;
             display: inline-block;
+            margin-left: 5px;
 
             body.issue-archive-open & {
                 background-image: url('../assets/images/chevron-up.svg');
+            }
+
+            html.csstransforms & {
+                transform: rotate(0);
+                transition: transform 0.4s;
+            }
+
+            html.csstransforms body.issue-archive-open & {
+                background-image: url('../assets/images/chevron-down.svg');
+                transform: rotate(-180deg);
             }
         }
     }
@@ -44,14 +65,18 @@ input {
         display: none;
 
         ul {
-            padding: 20px;
+            padding: 0.5em;
             margin: 0;
             list-style: none;
             background: black;
-            margin-top: 10px;
+            margin-top: 0.5em;
 
-            li a {
-                color: white;
+            li {
+                margin: 0.5em 0;
+
+                a {
+                    color: white;
+                }
             }
         }
     }
