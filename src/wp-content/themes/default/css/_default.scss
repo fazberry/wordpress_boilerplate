@@ -10,6 +10,7 @@ $searchIcon: url('../assets/images/search.svg') no-repeat center;
 @mixin background-size($size) {
     background-position: center;
     background-size: $size;
+    -ms-behavior: url(/wp-default/wp-content/themes/default/vendor/backgroundsize.min.htc);
 }
 
 @mixin transparent($color, $alpha) {
