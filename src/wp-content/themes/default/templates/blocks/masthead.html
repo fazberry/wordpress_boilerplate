@@ -1,4 +1,4 @@
-{% if article.masthead %}
+{% if article.masthead and (article.masthead.image or article.masthead.html or article.masthead.video) %}
     <div id="masthead">
         <div class="ratio-container" {% if article.masthead.type == 'image' %}style="background-image: url('{{ getImage(article.masthead.image, 'masthead-lazy') }}');" data-background="{{ getImage(article.masthead.image, 'masthead') }}"  data-background-mobile="{{ getImage(article.masthead.image, 'masthead-mobile') }}"{% endif %}>
 
