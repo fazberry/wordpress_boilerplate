@@ -25,9 +25,16 @@
                 $this->_article->masthead = new stdClass();
                 $this->_article->masthead->type = $masthead['acf_fc_layout'];
                 switch($this->_article->masthead->type) {
-                    case 'image': $this->_article->masthead->image = $masthead['image']; break;
-                    case 'video': $this->_article->masthead->url = $masthead['video']; break;
-                    case 'html': $this->_article->masthead->html = $masthead['html']; break;
+                    case 'image':
+                        $this->_article->masthead->image = $masthead['image'];
+                        break;
+                    case 'video':
+                        $this->_article->masthead->video = wp_get_attachment_url($masthead['video']);
+                        $this->_article->masthead->image = get_field('thumbnail', $ID);
+                        break;
+                    case 'html':
+                        $this->_article->masthead->html = $masthead['html'];
+                        break;
                 }
             }
 

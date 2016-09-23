@@ -1,5 +1,7 @@
 <?php
-
+    @ini_set( 'upload_max_size' , '64M' );
+    @ini_set( 'post_max_size', '64M');
+    @ini_set( 'max_execution_time', '300' );
     // define( 'WP_MEMORY_LIMIT', '250M' );
 
     function disable_mytheme_action() {

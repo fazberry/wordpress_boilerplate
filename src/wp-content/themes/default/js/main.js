@@ -44,6 +44,57 @@ $(function() {
     });
 
 
+    //////////// Masthead ////////////
+
+    $('#masthead .masthead-play').on('click', function(e) {
+        e.preventDefault();
+
+        var playInterval = window.setInterval(function(){
+            if ($( '.mejs-overlay-play').length) {
+                clearInterval(playInterval);
+                $( '.mejs-overlay-play').trigger( 'click' );
+            }
+        }, 200);
+
+        var $this = $(this),
+            $container = $this.closest('#masthead');
+
+        // Generate video code
+        var $videoContainer = $('<div>', {'class': 'masthead-video wp-video'}).hide();
+        $videoContainer.append($('<video>', {'class': 'wp-video-shortcode', 'width': 640, 'height': 360}).append($('<source/>', {'src': $container.data('video')})));
+        var $videoControls = $('<div>', {'class': 'masthead-video-controls'});
+        $videoControls.append($('<a>', {'text': 'Play'}));
+        $videoContainer.append($videoControls);
+        $videoContainer.children('video').mediaelementplayer({iPadUseNativeControls: true, AndroidUseNativeControls: true});
+
+        $container.append($videoContainer);
+
+        // Do we need to expand the header (16:9)
+        if (windowWidth * (9/16) < windowHeight * 0.8) {
+            $container.data({'height': $container.height()}).animate({height: windowWidth * (9/16)});
+        } else {
+            $container.data({'height': $container.height()}).animate({height: windowHeight * 0.8});
+        }
+
+        $videoContainer.fadeIn(function() {
+            var mastheadPlayer = $videoContainer.find('video').get(0);
+            if(mastheadPlayer.player) {
+                mastheadPlayer.player.play();
+            } else {
+                mastheadPlayer.play();
+            }
+        });
+
+        $('.masthead-video-controls a').on('click', function(e) {
+            e.preventDefault();
+            $container.animate({'height': $container.data('height')});
+            $videoContainer.fadeOut(function() {
+                $videoContainer.remove();
+            });
+        });
+
+    });
+
 
     //////////// Lazyloading ////////////
 
