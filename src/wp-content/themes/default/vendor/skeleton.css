@@ -109,9 +109,12 @@
 
 /* For devices larger than 550px */
 @media (max-width: 550px) {
-.row > .column,
-.row > .columns {
-  width: 100%; }
+  .row > .column,
+  .row > .columns {
+    width: 100%;
+    margin-left: 0;
+    float: none;
+  }
 }
 
 /* Base Styles
