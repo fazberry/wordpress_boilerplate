@@ -23,7 +23,6 @@ $(function() {
     });
 
 
-
     //////////// Lazyloading ////////////
 
     function lazyLoad(x) {
@@ -73,13 +72,11 @@ $(function() {
     }
 
     $(window).scroll(function(){
-        var x = $(this).scrollTop();
-        lazyLoad(x);
+        lazyLoad($(this).scrollTop());
     }).on('resize', function() {
-        var x = $(this).scrollTop();
-        lazyLoad(x);
+        lazyLoad($(this).scrollTop());
     });
-    lazyLoad(0);
+    lazyLoad($(this).scrollTop());
 
     //////////// Lazyloading ////////////
 });
