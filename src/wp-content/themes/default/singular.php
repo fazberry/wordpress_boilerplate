@@ -10,7 +10,10 @@
 
         $article = $site->getArticle($post->ID);
 
-        echo $twig->render('article.html', array('site'=> $site, 'article' => $article));
+        // Get sibling nav
+        $siblings = $article->getSiblings();
+
+        echo $twig->render('article.html', array('site'=> $site, 'article' => $article, 'siblings' => $siblings));
 
     }
 

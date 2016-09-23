@@ -183,6 +183,71 @@ input {
     }
 }
 
+/********** SIBLING NAV **********/
+.article-sibling {
+    box-sizing: border-box;
+    position: fixed;
+    top: 25%;
+    padding: 10px;
+    z-index: 1000;
+    background: #333;
+    width: 250px;
+    transition: 0.3s;
+
+    .article-sibling-tab {
+        position: absolute;
+        top: 0;
+        width: 30px;
+        height: 40px;
+        background: #eee;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    &.article-sibling--before {
+        left: -250px;
+
+        &:hover {
+            left: 0;
+        }
+
+        .article-sibling-tab {
+            right: -30px;
+            background-image: url('../assets/images/chevron-left.svg');
+        }
+    }
+
+    &.article-sibling--after {
+        right: -250px;
+
+        &:hover {
+            right: 0;
+        }
+     
+        .article-sibling-tab {
+            left: -30px;
+            background-image: url('../assets/images/chevron-right.svg');
+        }
+    }
+
+    .article-sibling-content {
+        a {
+            color: white;
+        }
+        
+        h3 {
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            margin: 0.5em 0;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
 
 /********** UTILITIES **********/
 .u-text-right {

@@ -23,6 +23,28 @@ $(function() {
     });
 
 
+    //////////// Nav ////////////
+
+    var $nav = $('#nav:eq(0)');
+    $(window).on('resize', function() {
+        // How wide is the nav?
+        var navWidth = $nav.find('ul:first-of-type').innerWidth();
+
+        // How wide are the items?
+        var itemsWidth = 0;
+        $nav.find('ul:first-of-type li').each( function(){ itemsWidth += $(this).width(); });
+
+        console.log(navWidth, itemsWidth);
+
+        if (navWidth <= itemsWidth) {
+            $nav.addClass('nav--mobile');
+        } else {
+            $nav.removeClass('nav--mobile')
+        }
+    });
+
+
+
     //////////// Lazyloading ////////////
 
     function lazyLoad(x) {

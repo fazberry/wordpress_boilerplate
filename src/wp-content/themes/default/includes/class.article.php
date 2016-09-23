@@ -58,4 +58,27 @@
             // return property_exists($this->_article, $name);
             return true;
         }
+
+        public function getSiblings() {
+            $siblings = get_pages(array(
+                'child_of' => $this->post->post_parent,
+                'parent' => $this->post->post_parent,
+                'sort_column' => 'menu_order'
+            ));
+            foreach ($siblings as $key=>$sibling) {
+                if ($this->post->ID == $sibling->ID) {
+                    $ID = $key;
+                }
+            }
+
+            $return = array();
+            if (array_key_exists($ID - 1, $siblings) && $siblings[$ID-1]->ID) {
+                $return['before'] = new Article($siblings[$ID-1]->ID);
+            }
+            if (array_key_exists($ID + 1, $siblings) && $siblings[$ID+1]->ID) {
+                $return['after'] = new Article($siblings[$ID+1]->ID);
+            }
+
+            return $return;
+        }
     }
