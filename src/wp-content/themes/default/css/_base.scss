@@ -24,6 +24,36 @@ input {
         color: #333;
         text-transform: uppercase;
         letter-spacing: 1px;
+
+        &.issue--archive {
+            cursor: pointer;
+            background-image: url('../assets/images/chevron-down.svg');
+            background-position: center right;
+            background-repeat: no-repeat;
+            padding-right: 30px;
+            display: inline-block;
+
+            body.issue-archive-open & {
+                background-image: url('../assets/images/chevron-up.svg');
+            }
+        }
+    }
+
+    .issue-archive {
+        text-align: center;
+        display: none;
+
+        ul {
+            padding: 20px;
+            margin: 0;
+            list-style: none;
+            background: black;
+            margin-top: 10px;
+
+            li a {
+                color: white;
+            }
+        }
     }
 }
 

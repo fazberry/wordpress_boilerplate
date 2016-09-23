@@ -17,6 +17,7 @@
             $this->_site->url = get_site_url();
             $this->_site->ga = get_field('google_analytics', 'site');
             $this->_site->issue = new Issue($issue);
+            $this->_site->issues = $this->getIssues();
             $this->_site->nav = $this->getNav();
 
 
@@ -71,7 +72,7 @@
 
                 // Find the latest published issue with published articles
                 $parents = get_pages(array(
-                    'numberposts'   => 1,
+                    'number'        => 1,
                     'post_type'     => 'page',
                     'sort_column'   => 'post_date',
                     'status'        => 'published',
@@ -80,7 +81,7 @@
                 ));
 
                 $issues = get_pages(array(
-                    'numberposts'   => 1,
+                    'number'        => 1,
                     'post_type'     => 'page',
                     'sort_column'   => 'post_date',
                     'status'        => 'published',
@@ -98,6 +99,35 @@
 
             }
 
+        }
+
+        // Get list of all published issues
+        private function getIssues() {
+            $issues = array();
+
+            $parents = get_pages(array(
+                'post_type'     => 'page',
+                'sort_column'   => 'post_date',
+                'status'        => 'published',
+                'sort_order'    => 'desc',
+                'parent'        => 0
+            ));
+
+            foreach($parents AS $parent) {
+                $tmpIssues = get_pages(array(
+                    'post_type'     => 'page',
+                    'sort_column'   => 'post_date',
+                    'status'        => 'published',
+                    'sort_order'    => 'desc',
+                    'parent'        => $parent->ID
+                ));
+
+                foreach($tmpIssues AS $issue) {
+                    array_push($issues, new Issue($issue));
+                }
+            }
+
+            return $issues;
         }
 
         // Build article object for a given post ID
@@ -121,13 +151,6 @@
             if ($items) {
                 $nav = array_merge($nav, $items);
             }
-
-            // Archive
-            $archive = (object) array(
-                'title' => 'Archive',
-                'link' => '/archive'
-            );
-            array_push($nav, $archive);
 
             return $nav;
         }

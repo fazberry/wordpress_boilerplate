@@ -9,6 +9,21 @@ $(function() {
     });
 
 
+    //////////// Archive ////////////
+
+    $('.issue--archive').on('click', function(e) {
+        e.preventDefault();
+
+        $('body').toggleClass('issue-archive-open');
+        if ($('body').hasClass('issue-archive-open')) {
+            $('.issue-archive').slideDown();
+        } else {
+            $('.issue-archive').slideUp();
+        }
+    });
+
+
+
     //////////// Lazyloading ////////////
 
     function lazyLoad(x) {

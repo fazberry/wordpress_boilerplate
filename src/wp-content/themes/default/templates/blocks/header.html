@@ -5,7 +5,7 @@
                 <a href="{{ site.url }}"><img src="{{ getImage(site.logo, 'logo') }}" alt="" class="header-logo" /></a>
             </div>
             <div class="six columns u-text-center">
-                <div class="issue">{{ site.issue.title }}</div>
+                <div class="issue {% if site.issues is iterable %}issue--archive{% endif %}">{{ site.issue.title }}</div>
             </div>
             <div class="three columns u-text-right">
                 <form  id="search">
@@ -15,3 +15,12 @@
             </div>
         </div>
     </div>
+    {% if site.issues is iterable %}
+        <div class="row issue-archive">
+            <ul>
+                {% for issue in site.issues %}
+                    <li><a href='{{ issue.url }}'>{{ issue.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
