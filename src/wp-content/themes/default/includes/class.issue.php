@@ -30,7 +30,8 @@
             $defaults = array(
                 'post_type'      => 'page',
                 'post_parent'    => $this->_issue->ID,
-                'posts_per_page' => -1
+                'posts_per_page' => -1,
+                'sort_column' => 'menu_order'
             );
 
             $args = array_merge($defaults, $args);
