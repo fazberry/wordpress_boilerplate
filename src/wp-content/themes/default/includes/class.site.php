@@ -16,9 +16,15 @@
             $this->_site->logo = get_field('logo', 'site');
             $this->_site->url = get_site_url();
             $this->_site->ga = get_field('google_analytics', 'site');
-            $this->_site->issue = new Issue($issue);
-            $this->_site->issues = $this->getIssues();
+            
+            $this->_site->issueBased = (get_field('site_type', 'options') == 'issue-based');
+            if($this->_site->issueBased) {
+                $this->_site->issue = new Issue($issue);
+                $this->_site->issues = $this->getIssues();
+            }
+
             $this->_site->nav = $this->getNav();
+
 
 
             // Check if user has access
@@ -57,7 +63,7 @@
         private function getIssue() {
             global $post;
 
-            // If in an issue, work out what issue it is
+                // If in an issue, work out what issue it is
             if(is_page() && $post->post_parent > 0) {
 
                 $children = get_pages('child_of='.$post->ID);
@@ -96,9 +102,7 @@
                     header('Location: ' . $issues[0]->guid);
                     die();
                 }
-
             }
-
         }
 
         // Get list of all published issues
