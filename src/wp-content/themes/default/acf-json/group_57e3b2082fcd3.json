@@ -3,6 +3,31 @@
     "title": "Site settings",
     "fields": [
         {
+            "key": "field_57f38a9f082a7",
+            "label": "Site type",
+            "name": "site_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "issue-based": "Issue Based",
+                "blog": "Rolling News"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
             "key": "field_57e3b21142c92",
             "label": "Logo",
             "name": "logo",
@@ -63,5 +88,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1474545604
+    "modified": 1475579047
 }
