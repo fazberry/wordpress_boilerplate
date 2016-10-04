@@ -4,6 +4,10 @@ body {
 
 a {
     text-decoration: none;
+    color: $linkColor;
+    &:hover {
+        color: $linkHover
+    }
 }
 
 input {
@@ -24,6 +28,7 @@ input {
 /********** Header **********/
 
 #header {
+    margin: 10px 0 0;
     .issue {
         line-height: 68px;
         font-size: 1.1em;
@@ -121,7 +126,6 @@ input {
 /********** NAV **********/
 #nav {
     background: $mainBackground;
-
     ul {
         list-style: none;
         margin: 0;
@@ -160,6 +164,16 @@ input {
 
         .ratio-container {
            @include background-size(cover);
+        }
+    }
+    .rollup-content {
+        margin: 10px 0;
+        h3 {
+            font-size: 2em;
+            margin: 0;
+        }
+        p {
+            color: $mainColor;
         }
     }
 }
@@ -313,6 +327,7 @@ input {
 
         p:last-child {
             margin-bottom: 0;
+            color: white;
         }
     }
 }
