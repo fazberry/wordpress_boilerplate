@@ -10,18 +10,18 @@
         // Build basic site object and load data
         function __construct() {
             $this->_site = (object) array();
+            $this->_site->issueBased = (get_field('site_type', 'site') == 'issue-based');
+            if($this->_site->issueBased) {
+                $issue = $this->getIssue();
+                $this->_site->issue = new Issue($issue);
+                $this->_site->issues = $this->getIssues();
+            }
 
-            $issue = $this->getIssue();
             $this->_site->development = (get_field('status', 'site') == 'dev');
             $this->_site->logo = get_field('logo', 'site');
             $this->_site->url = get_site_url();
             $this->_site->ga = get_field('google_analytics', 'site');
             
-            $this->_site->issueBased = (get_field('site_type', 'options') == 'issue-based');
-            if($this->_site->issueBased) {
-                $this->_site->issue = new Issue($issue);
-                $this->_site->issues = $this->getIssues();
-            }
 
             $this->_site->nav = $this->getNav();
 
@@ -103,6 +103,7 @@
                     die();
                 }
             }
+        
         }
 
         // Get list of all published issues
@@ -134,6 +135,28 @@
             return $issues;
         }
 
+
+        // Site type - News roll 
+        public function getArticles($args = array()) {
+            $defaults = array(
+                'post_type'      => 'post',
+                'posts_per_page' => -1,
+                'sort_column' => 'menu_order'
+            );
+
+            $args = array_merge($defaults, $args);
+
+            $posts = get_posts($args);
+            $articles = array();
+            
+            foreach ($posts as $post) {
+                array_push($articles, new Article($post->ID));
+            }
+
+            return $articles;
+        }
+
+
         // Build article object for a given post ID
         public function getArticle($ID) {
             return new Article($ID);
@@ -144,16 +167,55 @@
             $nav = array();
 
             // Home
-            $home = (object) array(
-                'title' => 'Home',
-                'link' => $this->_site->issue->link
-            );
+            if($this->_site->issueBased) {
+                $home = (object) array(
+                    'title' => 'Home',
+                    'link' => $this->_site->issue->link
+                );
+            } else {
+                $home = (object) array(
+                    'title' => 'Home',
+                    'link' => $this->_site->url
+                );
+            }
             array_push($nav, $home);
 
-            // Get issue categories
-            $items = $this->_site->issue->getNavItems();
-            if ($items) {
-                $nav = array_merge($nav, $items);
+            if($this->_site->issueBased) {
+                // Get issue categories
+                $items = $this->_site->issue->getNavItems();
+                if ($items) {
+                    $nav = array_merge($nav, $items);
+                }
+            } else {
+                $categories = get_categories();
+
+                foreach ($categories as $category) {
+                    if($category->term_id == 1 ) {
+                        continue;
+                    }
+                    $item = (object) array(
+                        'title' => get_cat_name($category->term_id),
+                        'link' => get_category_link($category->term_id)
+                    );
+                    array_push($nav, $item);
+                }
+
+                $args = array(
+                        'hierarchical' => 1,
+                        'sort_order' => 'asc',
+                        'parent' => 0,
+                );
+
+                $pages = get_pages($args); 
+
+                foreach ($pages as $page) {
+                    $item = (object) array(
+                        'title' => get_the_title($page->ID),
+                        'link' => get_the_permalink($page->ID)
+                    );
+                    array_push($nav, $item);
+                }
+
             }
 
             return $nav;
