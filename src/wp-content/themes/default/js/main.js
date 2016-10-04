@@ -39,7 +39,7 @@ $(function() {
         if (navWidth <= itemsWidth) {
             $nav.addClass('nav--mobile');
         } else {
-            $nav.removeClass('nav--mobile')
+            $nav.removeClass('nav--mobile');
         }
     });
 
