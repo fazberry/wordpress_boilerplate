@@ -1,5 +1,9 @@
 <?php
-    $debug = (get_field('status', 'site') == 'dev');
+
+    $debug = true;
+    if(function_exists('get_field')) {
+        $debug = (get_field('status', 'site') == 'dev');
+    }
 
     if ($debug) {
         ini_set('display_errors', 1);
@@ -8,7 +12,9 @@
     }
 
     include 'includes/functions/setup.php';
-    include 'includes/functions/admin.php';
+    if(!$debug) {
+        include 'includes/functions/admin.php';
+    }
     include 'includes/functions/plugins.php';
     include 'includes/functions/default.php';
     include 'includes/functions/enqueue.php';
