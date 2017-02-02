@@ -1,4 +1,5 @@
-# default-gulp
+# Wordpress Boilerplate
+## Basic wordpress theme using twig
 
 ### Getting started
 * Install Node.JS - [See wiki](http://git.sequelgroup.co.uk/Sequel/info/wiki/Node)
