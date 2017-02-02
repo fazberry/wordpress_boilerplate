@@ -22,4 +22,4 @@ It will watch for any new changes and re-run the above steps if needed
 ### Starting new project
 * Create a repository -> check the checkbox
 * In Bash - git clone 
-* `git pull gogs@git.sequelgroup.co.uk:Boilerplates/default-wordpress.git --allow-unrelated-histories`
+* `git pull https://github.com/fazberry/wordpress_boilerplate.git --allow-unrelated-histories`
