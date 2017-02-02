@@ -2,7 +2,7 @@
 ## Basic wordpress theme using twig
 
 ### Getting started
-* Install Node.JS - [See wiki](http://git.sequelgroup.co.uk/Sequel/info/wiki/Node)
+* Install Node.JS
 * Fork repository to a new one with the project name
 * Clone to your local machine
 * Open CMD/Terminal and traverse to GIT folder
