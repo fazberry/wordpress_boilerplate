@@ -1,0 +1,78 @@
+@import '../mixins';
+@import '../../theme/variables';
+
+body {
+  background: mix(white, colour('primary'), 75%);
+}
+
+a {
+    color: colour('link');
+
+    &:hover {
+        color: colour('linkHover');
+    }
+}
+
+.login #backtoblog a, .login #nav a {
+    color: colour('textHighlight');
+
+    &:hover,
+    &:focus {
+        color: colour('linkHover');
+    }
+}
+
+.login #login_error, .login .message {
+    border-left: none;
+}
+
+.wp-core-ui .button-secondary:focus, .wp-core-ui .button.focus, .wp-core-ui .button:focus,
+input[type="text"]:focus, input[type="search"]:focus, input[type="radio"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, input[type="password"]:focus, input[type="checkbox"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="email"]:focus, input[type="month"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+  border-color: colour('linkHover');
+  box-shadow: 0 0 2px rgba(colour('linkHover'), 0.8);
+}
+
+.wp-core-ui .button-primary {
+  background: colour('primary');
+  border-color: colour('primary') colour('primary') colour('primary');
+  color: #fff;
+  box-shadow: 0 1px 0 colour('primary');
+  text-shadow: 0 -1px 1px colour('primary'), 1px 0 1px colour('primary'), 0 1px 1px colour('primary'), -1px 0 1px colour('primary');
+}
+
+.wp-core-ui .button-primary:hover, .wp-core-ui .button-primary:focus {
+  background: lighten(colour('primary'), 10%);
+  border-color: colour('primary');
+  color: #fff;
+  box-shadow: 0 1px 0 colour('primary');
+}
+
+.wp-core-ui .button-primary:focus {
+  box-shadow: inset 0 1px 0 colour('body'), 0 0 2px 1px colour('linkHover');
+}
+
+.wp-core-ui .button-primary:active, .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover {
+  background: colour('body');
+  border-color: colour('body');
+  box-shadow: inset 0 2px 0 colour('body');
+}
+
+.wp-core-ui .button-primary[disabled], .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary.button-primary-disabled, .wp-core-ui .button-primary.disabled {
+  color: #d1cdc7 !important;
+  background: #db9925 !important;
+  border-color: colour('body') !important;
+  text-shadow: none !important;
+}
+
+.wp-core-ui .button-primary.button-hero {
+  box-shadow: 0 2px 0 colour('body') !important;
+}
+
+.wp-core-ui .button-primary.button-hero:active {
+  box-shadow: inset 0 3px 0 colour('body') !important;
+}
+
+.wp-core-ui .wp-ui-primary {
+  color: #fff;
+  background-color: colour('body');
+}

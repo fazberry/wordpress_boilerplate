@@ -1,0 +1,14 @@
+// color('link')
+$colours: (
+    text: #333,
+    textHighlight: #999,
+    link: #004a8f,
+    linkHover: #0077c8,
+    primary: #004a8f,
+    secondary: #ed1c24,
+    body: #fff
+);
+
+// @include mobile|tablet|desktop { }
+$mobile-width: 400px;
+$desktop-width: 1024px;

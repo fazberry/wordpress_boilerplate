@@ -1,0 +1,68 @@
+.container--article {
+    margin: 3em auto;
+}
+
+.article-content {
+    .article-body {
+        width: 86%;
+        max-width: 960px;
+        margin: 0 auto;
+
+        &.article-body-narrow_centered {
+            .article-body-maincontent {
+                float: none;
+                margin: 0 auto;
+            }
+        }
+        &.article-body-image_slider {
+            .image-slider {
+                position: relative;
+                margin: 40px 0;
+                .owl-nav {
+                    position: absolute;
+                    right: -60px;
+                    bottom: 0;
+                    height: 160px;
+                    background: #ccc;
+                    width: 60px;
+                    div {
+                        background: #ccc url(../assets/images/icon-hero-arrow.png);
+                        background-repeat: no-repeat;
+                        -webkit-transition: background-color 150ms ease-out;
+                        transition: background-color 150ms ease-out;
+                        height: 50%;
+                        width: 60px;
+                        z-index: 10;
+                        text-indent: -9999px;
+                        cursor: pointer;
+                        display: inline-block;
+                        position: absolute;
+                    }
+                    .owl-prev { 
+                        background-position: 0px -10px;
+                        bottom: 0;
+                        &:hover {
+                            background-color: #000;
+                        }
+                    }
+                    .owl-next {
+                        background-position: 0 -108px;
+                        top: 0;
+                        border-bottom: 1px solid white;
+                        &:hover {
+                            background-color: #000;
+                        }
+                    }
+                }
+                .image {
+                    height: 240px;
+                    @include background-size(cover);
+                }
+            }
+        }
+    }
+}
+
+.section-bg-image {
+    @include background-size(cover);
+}

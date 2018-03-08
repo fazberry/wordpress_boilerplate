@@ -1,0 +1,21 @@
+.u-text-right {
+    text-align: right;
+}
+ 
+.u-text-center {
+    text-align: center;
+}
+
+.u-mobile {
+    display: none;
+}
+
+@include mobile {
+    .u-mobile {
+        display: block;
+    }
+
+    .u-desktop {
+        display: none;
+    }
+}

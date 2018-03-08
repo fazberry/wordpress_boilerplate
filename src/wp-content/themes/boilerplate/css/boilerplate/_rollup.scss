@@ -1,0 +1,21 @@
+.rollup {
+    .rollup-image {
+        width: 100%;
+        @include aspect-ratio(16, 9);
+
+        .ratio-container {
+           @include background-size(cover);
+        }
+    }
+    .rollup-content {
+        margin: 10px 0;
+        h3 {
+            font-size: 2em;
+            margin: 0;
+            color: colour(link);
+        }
+        p {
+            color: colour(text);
+        }
+    }
+} 

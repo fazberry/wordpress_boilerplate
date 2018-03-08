@@ -1,0 +1,15 @@
+{% if article.hero and (article.hero.image or article.hero.html or article.hero.video) %}
+    <div class="hero"  {% if article.hero.type == 'video' %}data-video="{{ article.hero.video }}"{% endif %}>
+        <div class="ratio-container" {% if article.hero.type == 'image' or article.hero.type == 'video' %}style="background-image: url('{{ getImage(article.hero.image, 'hero-lazy') }}');" data-background="{{ getImage(article.hero.image, 'hero') }}"  data-background-mobile="{{ getImage(article.hero.image, 'hero-mobile') }}"{% endif %}>
+
+            {% if article.hero.html %}
+                <div class="hero-hype">
+                    {{ article.hero.html|raw }}
+                </div>
+            {% elseif article.hero.type == 'video' %}
+                <div class="hero-play"></div>
+            {% endif %}
+
+        </div>
+    </div>
+{% endif %}

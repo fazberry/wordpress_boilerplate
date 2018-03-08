@@ -1,0 +1,129 @@
+.nav {
+    background: colour(primary);
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+
+            a {
+                display: block;
+                color: #fff;
+                padding: 0 20px;
+                font-size: 1.5rem;
+                line-height: 2.5em;
+                white-space: nowrap;
+
+                &:hover {
+
+                }
+            }
+
+            &.active {
+                background: colour('linkHover');
+            }
+
+            &:hover {
+                background: colour('linkHover');
+
+                > ul {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    /* Sub-nav */
+    ul ul {
+        display: none;
+        position: absolute;
+        z-index: 100;
+
+        li {
+            display: block;
+        }
+    }
+
+    /* first level */
+    > div > ul > li {
+        float: left;
+
+        /* first level sub-nav */
+        > ul {
+            top: 100%;
+            background: colour('secondary');
+
+            /* second level sub-nav */
+            > li > ul {
+                top: 0;
+                left: 100%;
+                background: colour('secondary');
+            }
+        }
+    }
+}
+
+@include mobile {
+    .nav-header-mobile-open {
+        @include icon('menu-highlight.png', 32px, 32px);
+    }
+
+    .nav {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        .nav-header-mobile {
+            position: relative;
+            font-size: 2em;
+            padding: 0 20px 0.3em;
+            color: white;
+
+            .nav-header-mobile-close {
+                @include icon('close.png', 32px, 32px);
+                position: absolute;
+                top: 6px;
+                right: 6px;
+            }
+        }
+
+        > .container {
+            padding: 0;
+
+            > ul > li > ul {
+                display: block;
+
+                > li > ul {
+                    display: none !important;
+                }
+            }
+        }
+
+        display: none;
+
+        ul {
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+
+            li {
+                display: block;
+                float: none !important;
+            }
+        }
+    }
+
+    body.show-nav {
+        .nav {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{% extends 'layouts/main.twig' %}
+
+
+{% block content %}
+    
+    <div class="container">
+        <div class="row">
+            <div class="eight columns">
+                <h2>Search results for: </h2>
+                Did you mean?<br/><br/>
+
+                <strong>{{ pluralize(search.resultCount, 'One result', '%d results') }}</strong>
+
+                {% for item in search.results %}
+                    <h3>{{ item.title }}</h3>
+                    {{ item.date }} | category<br/>
+                    <p>{{ item.excerpt|raw }}</p>
+                {% endfor %}
+            </div>
+            <div class="four columns">
+                {{ form|raw }}
+            </div>
+        </div>       
+    </div>
+
+{% endblock %}

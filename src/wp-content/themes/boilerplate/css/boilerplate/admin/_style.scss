@@ -1,0 +1,14 @@
+@import '../mixins';
+@import '../../theme/variables';
+@import 'cms';
+
+/* ACF */ 
+tr:nth-child(odd) > td.order {
+    background: #ddd !important;
+}
+
+/* Hide elements */
+#wp-admin-bar-wp-logo,
+#wp-admin-bar-comments {
+    display: none;
+}

@@ -1,0 +1,59 @@
+{% extends 'layouts/main.twig' %}
+
+{% block content %}    
+    {% include 'blocks/article-sibling-nav.twig' with { siblings: article.siblings } %}
+    {% include 'blocks/hero.twig' %}
+
+    <div class="container container--article">
+        <h1>{{ article.title|raw }}</h1>
+    </div>
+
+    <div class="article-content">
+        {% if article.layouts %}
+            {% for section in article.layouts %}
+                <div {% if section.background %}class="bg-colour bg-colour--{{section.background}} {% if loop.index == 1 %}article-body--down{% endif %} {% if section.background_image %}section-bg-image{% endif %}"{% endif %} {% if section.background_image %}style="background-image: url('{{ getImage(section.background_image, 'hero-lazy') }}');" data-background="{{ getImage(section.background_image, 'hero') }}{% endif %}">
+                    <div class="row article-body article-body-{{section.acf_fc_layout}}">
+                    {% if section.acf_fc_layout == 'image_slider' %} 
+                        <div class="owl-carousel image-slider">
+                            {% for image in section.images %}
+                                <div class="image" style="background-image: url('{{ getImage(image.ID, 'carousel-lazy') }}');" data-background="{{ getImage(image.ID, 'carousel') }}"></div>
+                            {% endfor%}
+                        </div>
+                    {% else %}
+                        {% if section.acf_fc_layout == 'section_left_middle_right' %}
+                            <div class="four columns">
+                                {{section.left|raw}}  
+                            </div>
+                            <div class="four columns">
+                                {{section.middle|raw}}  
+                            </div>
+                            <div class="four columns">
+                                {{section.right|raw}}  
+                            </div>
+                        {% else %}
+                            {% if section.acf_fc_layout == 'sidebar_left' %}
+                                <div class="four columns article-body-sidebar-left">
+                                    {{section.sidebar|raw}}  
+                                </div>
+                            {% endif %}
+                            <div class="{% if section.acf_fc_layout == 'full_width' %}twelve{% else %}eight{% endif %} columns article-body-maincontent">
+                                {{section.main_content|raw}}
+                            </div>
+                            {% if section.acf_fc_layout == 'sidebar_right' %}
+                                <div class="four columns article-body-sidebar-right">
+                                    {{section.sidebar|raw}}  
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    </div>
+                    {% if section.background and loop.last %}<div class="bg-triangle--last {% if loop.index is even %}bg-triangle--reversed{% endif %} bg-triangle--white"></div>{% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="article-body">
+                {{ article.content|raw }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+body {
+    font-size: 14px;
+}
+
+.container {
+    width: 86%;
+    max-width: 960px;
+}
+
+@include mobile {
+    .container {
+        width: 100%;
+    }
+}

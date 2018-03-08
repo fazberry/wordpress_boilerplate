@@ -1,0 +1,59 @@
+.header {
+    margin: 10px 0 0;
+    .issue {
+        line-height: 68px;
+        font-size: 1.1em;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        &.issue--archive {
+            cursor: pointer;
+        }
+
+        .issue-archive-icon {
+            background-image: url('../assets/images/chevron-down.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 15px;
+            height: 12px;
+            display: inline-block;
+            margin-left: 5px;
+
+            body.issue-archive-open & {
+                background-image: url('../assets/images/chevron-up.svg');
+            }
+
+            html.csstransforms & {
+                transform: rotate(0);
+                transition: transform 0.4s;
+            }
+
+            html.csstransforms body.issue-archive-open & {
+                background-image: url('../assets/images/chevron-down.svg');
+                transform: rotate(-180deg);
+            }
+        }
+    }
+
+    .issue-archive {
+        text-align: center;
+        display: none;
+
+        ul {
+            padding: 0.5em;
+            margin: 0;
+            list-style: none;
+            background: black;
+            margin-top: 0.5em;
+
+            li {
+                margin: 0.5em 0;
+
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+}
