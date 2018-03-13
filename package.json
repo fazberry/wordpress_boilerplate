@@ -1,8 +1,8 @@
 {
-  "name": "sequel-boilerplate-default",
-  "description": "Sequel boilerplate with Gulp",
+  "name": "wordpress-boilerplate",
+  "description": "Wordpress Boilerplate with Gulp",
   "version": "0.0.1",
-  "homepage": "http://sequelgroup.co.uk",
+  "homepage": "https://rodfarry.co.uk",
   "dependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.0",
